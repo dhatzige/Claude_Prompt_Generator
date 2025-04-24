@@ -40,7 +40,7 @@ const CounterStats: React.FC<CounterStatsProps> = ({
     const stepValue = Math.ceil((end - start) / totalSteps);
     const stepDuration = duration / totalSteps;
 
-    return setInterval(() => {
+    const interval = setInterval(() => {
       setter(prev => {
         const next = prev + stepValue;
         if (next >= end) {
@@ -50,6 +50,8 @@ const CounterStats: React.FC<CounterStatsProps> = ({
         return next;
       });
     }, stepDuration);
+    
+    return interval;
   };
 
   const formatNumber = (num: number): string => {
