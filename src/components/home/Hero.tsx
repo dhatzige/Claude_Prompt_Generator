@@ -1,9 +1,31 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
+import CounterStats from './CounterStats';
 
 const Hero = () => {
+  // In a real application, these would come from an API
+  const [stats, setStats] = useState({
+    jobs: 0,
+    students: 0,
+    placements: 0
+  });
+
+  // Simulate loading data from an API
+  useEffect(() => {
+    // This simulates an API call - in production, this would be a real API call
+    const loadStats = setTimeout(() => {
+      setStats({
+        jobs: 2500,
+        students: 15000,
+        placements: 5000
+      });
+    }, 500);
+
+    return () => clearTimeout(loadStats);
+  }, []);
+
   return (
     <section className="hero-gradient py-16 lg:py-24 relative overflow-hidden">
       <div className="absolute inset-0 greek-pattern opacity-10"></div>
@@ -82,24 +104,11 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div>
-            <div className="text-4xl font-bold text-brand-blue">15,000+</div>
-            <div className="text-gray-600 mt-2">Active Students</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-brand-blue">2,500+</div>
-            <div className="text-gray-600 mt-2">Employers</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-brand-blue">25+</div>
-            <div className="text-gray-600 mt-2">Universities</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-brand-blue">5,000+</div>
-            <div className="text-gray-600 mt-2">Job Placements</div>
-          </div>
-        </div>
+        <CounterStats 
+          jobs={stats.jobs} 
+          students={stats.students} 
+          placements={stats.placements} 
+        />
       </div>
     </section>
   );
