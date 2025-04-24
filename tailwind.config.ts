@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// TalentBridge brand colors
+				brand: {
+					blue: "#1A73E8",
+					"light-blue": "#E8F0FE",
+					orange: "#FF5722",
+					"light-gray": "#F9FAFB",
+					"dark-gray": "#333333"
 				}
 			},
 			borderRadius: {
